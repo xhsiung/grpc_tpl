@@ -49,7 +49,7 @@ def delBook( xid ):
 if __name__ == '__main__':
     #listBooks()
     #getBookId( 123 )
-    #postBook( 222, "test02" , "alex")
-    delBook( 123 )
-    getBookId(123)
+    postBook( 222, "test02" , "alex")
+    #delBook( 123 )
+    #getBookId(123)
     listBooks()

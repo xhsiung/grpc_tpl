@@ -27,17 +27,17 @@ class BookServiceStub(object):
     self.Post = channel.unary_unary(
         '/books.BookService/Post',
         request_serializer=mybooks__pb2.Book.SerializeToString,
-        response_deserializer=mybooks__pb2.BookList.FromString,
+        response_deserializer=mybooks__pb2.BookStatusResponse.FromString,
         )
     self.Put = channel.unary_unary(
         '/books.BookService/Put',
         request_serializer=mybooks__pb2.Book.SerializeToString,
-        response_deserializer=mybooks__pb2.Empty.FromString,
+        response_deserializer=mybooks__pb2.BookStatusResponse.FromString,
         )
     self.Delete = channel.unary_unary(
         '/books.BookService/Delete',
         request_serializer=mybooks__pb2.BookIdRequest.SerializeToString,
-        response_deserializer=mybooks__pb2.Empty.FromString,
+        response_deserializer=mybooks__pb2.BookStatusResponse.FromString,
         )
 
 
@@ -96,17 +96,17 @@ def add_BookServiceServicer_to_server(servicer, server):
       'Post': grpc.unary_unary_rpc_method_handler(
           servicer.Post,
           request_deserializer=mybooks__pb2.Book.FromString,
-          response_serializer=mybooks__pb2.BookList.SerializeToString,
+          response_serializer=mybooks__pb2.BookStatusResponse.SerializeToString,
       ),
       'Put': grpc.unary_unary_rpc_method_handler(
           servicer.Put,
           request_deserializer=mybooks__pb2.Book.FromString,
-          response_serializer=mybooks__pb2.Empty.SerializeToString,
+          response_serializer=mybooks__pb2.BookStatusResponse.SerializeToString,
       ),
       'Delete': grpc.unary_unary_rpc_method_handler(
           servicer.Delete,
           request_deserializer=mybooks__pb2.BookIdRequest.FromString,
-          response_serializer=mybooks__pb2.Empty.SerializeToString,
+          response_serializer=mybooks__pb2.BookStatusResponse.SerializeToString,
       ),
   }
   generic_handler = grpc.method_handlers_generic_handler(

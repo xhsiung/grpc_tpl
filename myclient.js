@@ -72,10 +72,10 @@ function delBook( obj ){
 }
 
 //listBooks
-listBooks();
+//listBooks();
 
 //Get 
-getBookId( {id:123} );
+//getBookId( {id:123} );
 
 //Post
 postBook( { id:222 , title:'hello' , author:"alex"});

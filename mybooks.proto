@@ -7,11 +7,11 @@ service BookService{
 
     rpc Get(BookIdRequest) returns (Book) {}
 
-    rpc Post( Book ) returns (BookList) {}
+    rpc Post( Book ) returns ( BookStatusResponse ) {}
 
-    rpc Put( Book ) returns ( Empty ) {}    
+    rpc Put( Book ) returns ( BookStatusResponse ) {}    
 
-    rpc Delete( BookIdRequest ) returns ( Empty ) {}
+    rpc Delete( BookIdRequest ) returns ( BookStatusResponse ) {}
     //rpc Watch(Empty) returns(stream Book){}
 }
 
@@ -25,6 +25,10 @@ message Book {
 
 message BookList{
     repeated  Book  books = 1 ;
+}
+
+message BookStatusResponse{
+    bool success = 1;
 }
 
 message BookIdRequest{

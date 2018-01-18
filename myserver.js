@@ -11,6 +11,7 @@ var books = [{
 }];
 
 var server = new grpc.Server();
+
 server.addService(booksProto.books.BookService.service, {
     list: function( call , callback){
         callback( null , books );
@@ -42,7 +43,7 @@ server.addService(booksProto.books.BookService.service, {
 
         //insert
         books.push( book );
-        return callback( null, books );
+        return callback( null, { success: true } );
     },
 
     put: function(call , callback){
@@ -53,7 +54,7 @@ server.addService(booksProto.books.BookService.service, {
                 //remove k location , one item delete
                 books[k].title = book.title;
                 books[k].author = book.author;
-                return callback( null, {} );
+                return callback( null, { success: true }  );
             }
         }
     
@@ -71,10 +72,10 @@ server.addService(booksProto.books.BookService.service, {
             if (books[ k ].id == id ){
                 //remove k location , one item delete
                 books.splice( k ,1) ;
-                return callback( null, {} );
+                return callback( null, { success: true } );
             }
         }
-
+        
         //error response
         callback({
             code:grpc.status.NOT_FOUND,

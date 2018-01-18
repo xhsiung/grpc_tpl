@@ -19,7 +19,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   name='mybooks.proto',
   package='books',
   syntax='proto3',
-  serialized_pb=_b('\n\rmybooks.proto\x12\x05\x62ooks\"\x07\n\x05\x45mpty\"1\n\x04\x42ook\x12\n\n\x02id\x18\x01 \x01(\x05\x12\r\n\x05title\x18\x02 \x01(\t\x12\x0e\n\x06\x61uthor\x18\x03 \x01(\t\"&\n\x08\x42ookList\x12\x1a\n\x05\x62ooks\x18\x01 \x03(\x0b\x32\x0b.books.Book\"\x1b\n\rBookIdRequest\x12\n\n\x02id\x18\x01 \x01(\x05\x32\xde\x01\n\x0b\x42ookService\x12\'\n\x04List\x12\x0c.books.Empty\x1a\x0f.books.BookList\"\x00\x12*\n\x03Get\x12\x14.books.BookIdRequest\x1a\x0b.books.Book\"\x00\x12&\n\x04Post\x12\x0b.books.Book\x1a\x0f.books.BookList\"\x00\x12\"\n\x03Put\x12\x0b.books.Book\x1a\x0c.books.Empty\"\x00\x12.\n\x06\x44\x65lete\x12\x14.books.BookIdRequest\x1a\x0c.books.Empty\"\x00\x62\x06proto3')
+  serialized_pb=_b('\n\rmybooks.proto\x12\x05\x62ooks\"\x07\n\x05\x45mpty\"1\n\x04\x42ook\x12\n\n\x02id\x18\x01 \x01(\x05\x12\r\n\x05title\x18\x02 \x01(\t\x12\x0e\n\x06\x61uthor\x18\x03 \x01(\t\"&\n\x08\x42ookList\x12\x1a\n\x05\x62ooks\x18\x01 \x03(\x0b\x32\x0b.books.Book\"%\n\x12\x42ookStatusResponse\x12\x0f\n\x07success\x18\x01 \x01(\x08\"\x1b\n\rBookIdRequest\x12\n\n\x02id\x18\x01 \x01(\x05\x32\x82\x02\n\x0b\x42ookService\x12\'\n\x04List\x12\x0c.books.Empty\x1a\x0f.books.BookList\"\x00\x12*\n\x03Get\x12\x14.books.BookIdRequest\x1a\x0b.books.Book\"\x00\x12\x30\n\x04Post\x12\x0b.books.Book\x1a\x19.books.BookStatusResponse\"\x00\x12/\n\x03Put\x12\x0b.books.Book\x1a\x19.books.BookStatusResponse\"\x00\x12;\n\x06\x44\x65lete\x12\x14.books.BookIdRequest\x1a\x19.books.BookStatusResponse\"\x00\x62\x06proto3')
 )
 
 
@@ -125,6 +125,37 @@ _BOOKLIST = _descriptor.Descriptor(
 )
 
 
+_BOOKSTATUSRESPONSE = _descriptor.Descriptor(
+  name='BookStatusResponse',
+  full_name='books.BookStatusResponse',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='success', full_name='books.BookStatusResponse.success', index=0,
+      number=1, type=8, cpp_type=7, label=1,
+      has_default_value=False, default_value=False,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=124,
+  serialized_end=161,
+)
+
+
 _BOOKIDREQUEST = _descriptor.Descriptor(
   name='BookIdRequest',
   full_name='books.BookIdRequest',
@@ -151,14 +182,15 @@ _BOOKIDREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=124,
-  serialized_end=151,
+  serialized_start=163,
+  serialized_end=190,
 )
 
 _BOOKLIST.fields_by_name['books'].message_type = _BOOK
 DESCRIPTOR.message_types_by_name['Empty'] = _EMPTY
 DESCRIPTOR.message_types_by_name['Book'] = _BOOK
 DESCRIPTOR.message_types_by_name['BookList'] = _BOOKLIST
+DESCRIPTOR.message_types_by_name['BookStatusResponse'] = _BOOKSTATUSRESPONSE
 DESCRIPTOR.message_types_by_name['BookIdRequest'] = _BOOKIDREQUEST
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
@@ -183,6 +215,13 @@ BookList = _reflection.GeneratedProtocolMessageType('BookList', (_message.Messag
   ))
 _sym_db.RegisterMessage(BookList)
 
+BookStatusResponse = _reflection.GeneratedProtocolMessageType('BookStatusResponse', (_message.Message,), dict(
+  DESCRIPTOR = _BOOKSTATUSRESPONSE,
+  __module__ = 'mybooks_pb2'
+  # @@protoc_insertion_point(class_scope:books.BookStatusResponse)
+  ))
+_sym_db.RegisterMessage(BookStatusResponse)
+
 BookIdRequest = _reflection.GeneratedProtocolMessageType('BookIdRequest', (_message.Message,), dict(
   DESCRIPTOR = _BOOKIDREQUEST,
   __module__ = 'mybooks_pb2'
@@ -198,8 +237,8 @@ _BOOKSERVICE = _descriptor.ServiceDescriptor(
   file=DESCRIPTOR,
   index=0,
   options=None,
-  serialized_start=154,
-  serialized_end=376,
+  serialized_start=193,
+  serialized_end=451,
   methods=[
   _descriptor.MethodDescriptor(
     name='List',
@@ -225,7 +264,7 @@ _BOOKSERVICE = _descriptor.ServiceDescriptor(
     index=2,
     containing_service=None,
     input_type=_BOOK,
-    output_type=_BOOKLIST,
+    output_type=_BOOKSTATUSRESPONSE,
     options=None,
   ),
   _descriptor.MethodDescriptor(
@@ -234,7 +273,7 @@ _BOOKSERVICE = _descriptor.ServiceDescriptor(
     index=3,
     containing_service=None,
     input_type=_BOOK,
-    output_type=_EMPTY,
+    output_type=_BOOKSTATUSRESPONSE,
     options=None,
   ),
   _descriptor.MethodDescriptor(
@@ -243,7 +282,7 @@ _BOOKSERVICE = _descriptor.ServiceDescriptor(
     index=4,
     containing_service=None,
     input_type=_BOOKIDREQUEST,
-    output_type=_EMPTY,
+    output_type=_BOOKSTATUSRESPONSE,
     options=None,
   ),
 ])
