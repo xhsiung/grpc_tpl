@@ -81,6 +81,8 @@ function watchBooks() {
     //recieve server  
     call.on('data', function(book) {
         console.log(book);
+    }).on('end' , function(){
+        console.log('end');
     }); 
 }
 
