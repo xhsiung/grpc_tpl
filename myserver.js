@@ -1,4 +1,7 @@
 var grpc = require("grpc");
+const {StringDecoder} = require('string_decoder');
+const decoder = new StringDecoder('utf8');
+
 var booksProto = grpc.load("mybooks.proto");
 
 var events = require("events");
@@ -85,17 +88,22 @@ server.addService(booksProto.books.BookService.service, {
             details: 'Not Found'
         });
     },
-
+    send: function( call , callback){
+        var o = JSON.parse( decoder.write( call.request.msg ) );
+        console.log( o );
+        return  callback( null , {msg: call.request.msg } );
+    },
+    //
     watch: function( call ){
         console.log( "watch ~~");
 
         //recieve client data
         call.on('data', function(result){
             console.log( result );
-        }).on('end', function(){
+        }).on('end',function(){
             console.log('end');
-	});
-        
+        })
+
         //recieve emit event
         bookStream.on("new_book" , function(book){
             //send client data

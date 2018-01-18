@@ -13,10 +13,21 @@ service BookService{
 
     rpc Delete( BookIdRequest ) returns ( BookStatusResponse ) {}
     
+    rpc Send( SendReq ) returns (SendRes){}
+
+    //listen
     rpc Watch(stream Book ) returns(stream Book){}
 }
 
 message Empty{}
+
+message SendReq{
+    bytes msg = 1;    
+}
+
+message SendRes{
+    bytes msg = 1;    
+}
 
 message Book {
     int32 id = 1;
@@ -35,3 +46,4 @@ message BookStatusResponse{
 message BookIdRequest{
     int32 id = 1;
 }
+

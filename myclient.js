@@ -1,5 +1,8 @@
 
 var grpc = require('grpc');
+const {StringDecoder} = require('string_decoder');
+const decoder = new StringDecoder('utf8');
+
 var booksProto = grpc.load('mybooks.proto');
 var client = new booksProto.books.BookService('0.0.0.0:50051', grpc.credentials.createInsecure());
 
@@ -71,8 +74,18 @@ function delBook( obj ){
     });
 }
 
+function sendBytes(){
+    var o = { name:"alex" , name2:"alex2"};
+
+    client.send( {msg: jsonToBytes( o ) } , function(error , result){
+        var o = bytesToJson(  result.msg  );
+        console.log( o );
+    });
+}
+
 //run it will noblock
 function watchBooks() {
+
     var call = client.watch();
     
     //send server data
@@ -81,10 +94,17 @@ function watchBooks() {
     //recieve server  
     call.on('data', function(book) {
         console.log(book);
-    }).on('end' , function(){
-        console.log('end');
     }); 
 }
+
+function jsonToBytes( data ){
+    return Buffer.from( JSON.stringify(data));
+}
+
+function bytesToJson( data ){
+    return JSON.parse( decoder.write( data ) );
+}
+
 
 //listBooks
 //listBooks();
@@ -93,7 +113,7 @@ function watchBooks() {
 //getBookId( {id:123} );
 
 //Post
-postBook( { id:222 , title:'hello' , author:"alex"});
+//postBook( { id:222 , title:'hello' , author:"alex"});
 
 //Put
 //putBook( { id: 123 , title:'hello' , author:"alex"});
@@ -102,3 +122,5 @@ postBook( { id:222 , title:'hello' , author:"alex"});
 //delBook( {id:123} );
 
 //listBooks();
+
+sendBytes()
