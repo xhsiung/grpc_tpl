@@ -92,7 +92,9 @@ server.addService(booksProto.books.BookService.service, {
         //recieve client data
         call.on('data', function(result){
             console.log( result );
-        });
+        }).on('end', function(){
+            console.log('end');
+	});
         
         //recieve emit event
         bookStream.on("new_book" , function(book){
