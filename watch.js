@@ -71,14 +71,10 @@ function delBook( obj ){
     });
 }
 
-//run it will noblock
 function watchBooks() {
     var call = client.watch();
-    
-    //send server data
     call.write( {id:333, title:"watchTitle" , author:"watchAlex"} );
-
-    //recieve server  
+    
     call.on('data', function(book) {
         console.log(book);
     }); 
@@ -91,7 +87,7 @@ function watchBooks() {
 //getBookId( {id:123} );
 
 //Post
-postBook( { id:222 , title:'hello' , author:"alex"});
+//postBook( { id:222 , title:'hello' , author:"alex"});
 
 //Put
 //putBook( { id: 123 , title:'hello' , author:"alex"});
@@ -100,3 +96,12 @@ postBook( { id:222 , title:'hello' , author:"alex"});
 //delBook( {id:123} );
 
 //listBooks();
+
+watchBooks();
+
+/*
+setInterval(function(){
+	console.log("test");
+	postBook( { id:222 , title:'hello' , author:"alex"});
+},1000);
+*/

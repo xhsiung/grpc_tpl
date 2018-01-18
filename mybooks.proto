@@ -12,7 +12,8 @@ service BookService{
     rpc Put( Book ) returns ( BookStatusResponse ) {}    
 
     rpc Delete( BookIdRequest ) returns ( BookStatusResponse ) {}
-    //rpc Watch(Empty) returns(stream Book){}
+    
+    rpc Watch(stream Book ) returns(stream Book){}
 }
 
 message Empty{}

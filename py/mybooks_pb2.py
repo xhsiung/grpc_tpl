@@ -19,7 +19,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   name='mybooks.proto',
   package='books',
   syntax='proto3',
-  serialized_pb=_b('\n\rmybooks.proto\x12\x05\x62ooks\"\x07\n\x05\x45mpty\"1\n\x04\x42ook\x12\n\n\x02id\x18\x01 \x01(\x05\x12\r\n\x05title\x18\x02 \x01(\t\x12\x0e\n\x06\x61uthor\x18\x03 \x01(\t\"&\n\x08\x42ookList\x12\x1a\n\x05\x62ooks\x18\x01 \x03(\x0b\x32\x0b.books.Book\"%\n\x12\x42ookStatusResponse\x12\x0f\n\x07success\x18\x01 \x01(\x08\"\x1b\n\rBookIdRequest\x12\n\n\x02id\x18\x01 \x01(\x05\x32\x82\x02\n\x0b\x42ookService\x12\'\n\x04List\x12\x0c.books.Empty\x1a\x0f.books.BookList\"\x00\x12*\n\x03Get\x12\x14.books.BookIdRequest\x1a\x0b.books.Book\"\x00\x12\x30\n\x04Post\x12\x0b.books.Book\x1a\x19.books.BookStatusResponse\"\x00\x12/\n\x03Put\x12\x0b.books.Book\x1a\x19.books.BookStatusResponse\"\x00\x12;\n\x06\x44\x65lete\x12\x14.books.BookIdRequest\x1a\x19.books.BookStatusResponse\"\x00\x62\x06proto3')
+  serialized_pb=_b('\n\rmybooks.proto\x12\x05\x62ooks\"\x07\n\x05\x45mpty\"1\n\x04\x42ook\x12\n\n\x02id\x18\x01 \x01(\x05\x12\r\n\x05title\x18\x02 \x01(\t\x12\x0e\n\x06\x61uthor\x18\x03 \x01(\t\"&\n\x08\x42ookList\x12\x1a\n\x05\x62ooks\x18\x01 \x03(\x0b\x32\x0b.books.Book\"%\n\x12\x42ookStatusResponse\x12\x0f\n\x07success\x18\x01 \x01(\x08\"\x1b\n\rBookIdRequest\x12\n\n\x02id\x18\x01 \x01(\x05\x32\xab\x02\n\x0b\x42ookService\x12\'\n\x04List\x12\x0c.books.Empty\x1a\x0f.books.BookList\"\x00\x12*\n\x03Get\x12\x14.books.BookIdRequest\x1a\x0b.books.Book\"\x00\x12\x30\n\x04Post\x12\x0b.books.Book\x1a\x19.books.BookStatusResponse\"\x00\x12/\n\x03Put\x12\x0b.books.Book\x1a\x19.books.BookStatusResponse\"\x00\x12;\n\x06\x44\x65lete\x12\x14.books.BookIdRequest\x1a\x19.books.BookStatusResponse\"\x00\x12\'\n\x05Watch\x12\x0b.books.Book\x1a\x0b.books.Book\"\x00(\x01\x30\x01\x62\x06proto3')
 )
 
 
@@ -238,7 +238,7 @@ _BOOKSERVICE = _descriptor.ServiceDescriptor(
   index=0,
   options=None,
   serialized_start=193,
-  serialized_end=451,
+  serialized_end=492,
   methods=[
   _descriptor.MethodDescriptor(
     name='List',
@@ -283,6 +283,15 @@ _BOOKSERVICE = _descriptor.ServiceDescriptor(
     containing_service=None,
     input_type=_BOOKIDREQUEST,
     output_type=_BOOKSTATUSRESPONSE,
+    options=None,
+  ),
+  _descriptor.MethodDescriptor(
+    name='Watch',
+    full_name='books.BookService.Watch',
+    index=5,
+    containing_service=None,
+    input_type=_BOOK,
+    output_type=_BOOK,
     options=None,
   ),
 ])

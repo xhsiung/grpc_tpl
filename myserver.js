@@ -43,6 +43,9 @@ server.addService(booksProto.books.BookService.service, {
 
         //insert
         books.push( book );
+        
+        //emit event
+        bookStream.emit( 'new_book' ,book );
         return callback( null, { success: true } );
     },
 
@@ -80,6 +83,21 @@ server.addService(booksProto.books.BookService.service, {
         callback({
             code:grpc.status.NOT_FOUND,
             details: 'Not Found'
+        });
+    },
+
+    watch: function( call ){
+        console.log( "watch ~~");
+
+        //recieve client data
+        call.on('data', function(result){
+            console.log( result );
+        });
+        
+        //recieve emit event
+        bookStream.on("new_book" , function(book){
+            //send client data
+            call.write( book );
         });
     }
 

@@ -39,6 +39,11 @@ class BookServiceStub(object):
         request_serializer=mybooks__pb2.BookIdRequest.SerializeToString,
         response_deserializer=mybooks__pb2.BookStatusResponse.FromString,
         )
+    self.Watch = channel.stream_stream(
+        '/books.BookService/Watch',
+        request_serializer=mybooks__pb2.Book.SerializeToString,
+        response_deserializer=mybooks__pb2.Book.FromString,
+        )
 
 
 class BookServiceServicer(object):
@@ -80,6 +85,13 @@ class BookServiceServicer(object):
     context.set_details('Method not implemented!')
     raise NotImplementedError('Method not implemented!')
 
+  def Watch(self, request_iterator, context):
+    # missing associated documentation comment in .proto file
+    pass
+    context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+    context.set_details('Method not implemented!')
+    raise NotImplementedError('Method not implemented!')
+
 
 def add_BookServiceServicer_to_server(servicer, server):
   rpc_method_handlers = {
@@ -107,6 +119,11 @@ def add_BookServiceServicer_to_server(servicer, server):
           servicer.Delete,
           request_deserializer=mybooks__pb2.BookIdRequest.FromString,
           response_serializer=mybooks__pb2.BookStatusResponse.SerializeToString,
+      ),
+      'Watch': grpc.stream_stream_rpc_method_handler(
+          servicer.Watch,
+          request_deserializer=mybooks__pb2.Book.FromString,
+          response_serializer=mybooks__pb2.Book.SerializeToString,
       ),
   }
   generic_handler = grpc.method_handlers_generic_handler(
