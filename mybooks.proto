@@ -15,7 +15,7 @@ service BookService{
     
     rpc Send( SendReq ) returns (SendRes){}
 
-    //listen
+    //
     rpc Watch(stream Book ) returns(stream Book){}
 }
 
@@ -46,4 +46,3 @@ message BookStatusResponse{
 message BookIdRequest{
     int32 id = 1;
 }
-

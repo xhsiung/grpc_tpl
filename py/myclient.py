@@ -1,9 +1,11 @@
 from __future__ import print_function
 
 import grpc
+import json
 
 import mybooks_pb2
 import mybooks_pb2_grpc
+import time
 
 '''
 python3 -m pip install --upgrade pip
@@ -61,13 +63,22 @@ def watchBook():
         print(err)
 
 
+def sendBytes():
+    global stub
+    data = { "name": "alex"}
+    byteMsg = bytes( json.dumps( data ), encoding = "utf8")  
+    result = stub.Send( mybooks_pb2.SendReq( msg=byteMsg ))
+    
+    o=json.loads( str(result.msg,encoding='utf8') )
+    print( o["name"] )
+
 if __name__ == '__main__':
     #getBookId( 123 )
     #postBook( 222, "test02" , "alex")
     #delBook( 123 )
     #getBookId(123)
-    listBooks()
+    #listBooks()
 
     #will lock
     #watchBook()
-    
+    sendBytes()

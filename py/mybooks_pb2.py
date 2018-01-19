@@ -19,7 +19,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   name='mybooks.proto',
   package='books',
   syntax='proto3',
-  serialized_pb=_b('\n\rmybooks.proto\x12\x05\x62ooks\"\x07\n\x05\x45mpty\"1\n\x04\x42ook\x12\n\n\x02id\x18\x01 \x01(\x05\x12\r\n\x05title\x18\x02 \x01(\t\x12\x0e\n\x06\x61uthor\x18\x03 \x01(\t\"&\n\x08\x42ookList\x12\x1a\n\x05\x62ooks\x18\x01 \x03(\x0b\x32\x0b.books.Book\"%\n\x12\x42ookStatusResponse\x12\x0f\n\x07success\x18\x01 \x01(\x08\"\x1b\n\rBookIdRequest\x12\n\n\x02id\x18\x01 \x01(\x05\x32\xab\x02\n\x0b\x42ookService\x12\'\n\x04List\x12\x0c.books.Empty\x1a\x0f.books.BookList\"\x00\x12*\n\x03Get\x12\x14.books.BookIdRequest\x1a\x0b.books.Book\"\x00\x12\x30\n\x04Post\x12\x0b.books.Book\x1a\x19.books.BookStatusResponse\"\x00\x12/\n\x03Put\x12\x0b.books.Book\x1a\x19.books.BookStatusResponse\"\x00\x12;\n\x06\x44\x65lete\x12\x14.books.BookIdRequest\x1a\x19.books.BookStatusResponse\"\x00\x12\'\n\x05Watch\x12\x0b.books.Book\x1a\x0b.books.Book\"\x00(\x01\x30\x01\x62\x06proto3')
+  serialized_pb=_b('\n\rmybooks.proto\x12\x05\x62ooks\"\x07\n\x05\x45mpty\"\x16\n\x07SendReq\x12\x0b\n\x03msg\x18\x01 \x01(\x0c\"\x16\n\x07SendRes\x12\x0b\n\x03msg\x18\x01 \x01(\x0c\"1\n\x04\x42ook\x12\n\n\x02id\x18\x01 \x01(\x05\x12\r\n\x05title\x18\x02 \x01(\t\x12\x0e\n\x06\x61uthor\x18\x03 \x01(\t\"&\n\x08\x42ookList\x12\x1a\n\x05\x62ooks\x18\x01 \x03(\x0b\x32\x0b.books.Book\"%\n\x12\x42ookStatusResponse\x12\x0f\n\x07success\x18\x01 \x01(\x08\"\x1b\n\rBookIdRequest\x12\n\n\x02id\x18\x01 \x01(\x05\x32\xd5\x02\n\x0b\x42ookService\x12\'\n\x04List\x12\x0c.books.Empty\x1a\x0f.books.BookList\"\x00\x12*\n\x03Get\x12\x14.books.BookIdRequest\x1a\x0b.books.Book\"\x00\x12\x30\n\x04Post\x12\x0b.books.Book\x1a\x19.books.BookStatusResponse\"\x00\x12/\n\x03Put\x12\x0b.books.Book\x1a\x19.books.BookStatusResponse\"\x00\x12;\n\x06\x44\x65lete\x12\x14.books.BookIdRequest\x1a\x19.books.BookStatusResponse\"\x00\x12(\n\x04Send\x12\x0e.books.SendReq\x1a\x0e.books.SendRes\"\x00\x12\'\n\x05Watch\x12\x0b.books.Book\x1a\x0b.books.Book\"\x00(\x01\x30\x01\x62\x06proto3')
 )
 
 
@@ -46,6 +46,68 @@ _EMPTY = _descriptor.Descriptor(
   ],
   serialized_start=24,
   serialized_end=31,
+)
+
+
+_SENDREQ = _descriptor.Descriptor(
+  name='SendReq',
+  full_name='books.SendReq',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='msg', full_name='books.SendReq.msg', index=0,
+      number=1, type=12, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b(""),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=33,
+  serialized_end=55,
+)
+
+
+_SENDRES = _descriptor.Descriptor(
+  name='SendRes',
+  full_name='books.SendRes',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='msg', full_name='books.SendRes.msg', index=0,
+      number=1, type=12, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b(""),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None, file=DESCRIPTOR),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=57,
+  serialized_end=79,
 )
 
 
@@ -89,8 +151,8 @@ _BOOK = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=33,
-  serialized_end=82,
+  serialized_start=81,
+  serialized_end=130,
 )
 
 
@@ -120,8 +182,8 @@ _BOOKLIST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=84,
-  serialized_end=122,
+  serialized_start=132,
+  serialized_end=170,
 )
 
 
@@ -151,8 +213,8 @@ _BOOKSTATUSRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=124,
-  serialized_end=161,
+  serialized_start=172,
+  serialized_end=209,
 )
 
 
@@ -182,12 +244,14 @@ _BOOKIDREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=163,
-  serialized_end=190,
+  serialized_start=211,
+  serialized_end=238,
 )
 
 _BOOKLIST.fields_by_name['books'].message_type = _BOOK
 DESCRIPTOR.message_types_by_name['Empty'] = _EMPTY
+DESCRIPTOR.message_types_by_name['SendReq'] = _SENDREQ
+DESCRIPTOR.message_types_by_name['SendRes'] = _SENDRES
 DESCRIPTOR.message_types_by_name['Book'] = _BOOK
 DESCRIPTOR.message_types_by_name['BookList'] = _BOOKLIST
 DESCRIPTOR.message_types_by_name['BookStatusResponse'] = _BOOKSTATUSRESPONSE
@@ -200,6 +264,20 @@ Empty = _reflection.GeneratedProtocolMessageType('Empty', (_message.Message,), d
   # @@protoc_insertion_point(class_scope:books.Empty)
   ))
 _sym_db.RegisterMessage(Empty)
+
+SendReq = _reflection.GeneratedProtocolMessageType('SendReq', (_message.Message,), dict(
+  DESCRIPTOR = _SENDREQ,
+  __module__ = 'mybooks_pb2'
+  # @@protoc_insertion_point(class_scope:books.SendReq)
+  ))
+_sym_db.RegisterMessage(SendReq)
+
+SendRes = _reflection.GeneratedProtocolMessageType('SendRes', (_message.Message,), dict(
+  DESCRIPTOR = _SENDRES,
+  __module__ = 'mybooks_pb2'
+  # @@protoc_insertion_point(class_scope:books.SendRes)
+  ))
+_sym_db.RegisterMessage(SendRes)
 
 Book = _reflection.GeneratedProtocolMessageType('Book', (_message.Message,), dict(
   DESCRIPTOR = _BOOK,
@@ -237,8 +315,8 @@ _BOOKSERVICE = _descriptor.ServiceDescriptor(
   file=DESCRIPTOR,
   index=0,
   options=None,
-  serialized_start=193,
-  serialized_end=492,
+  serialized_start=241,
+  serialized_end=582,
   methods=[
   _descriptor.MethodDescriptor(
     name='List',
@@ -286,9 +364,18 @@ _BOOKSERVICE = _descriptor.ServiceDescriptor(
     options=None,
   ),
   _descriptor.MethodDescriptor(
+    name='Send',
+    full_name='books.BookService.Send',
+    index=5,
+    containing_service=None,
+    input_type=_SENDREQ,
+    output_type=_SENDRES,
+    options=None,
+  ),
+  _descriptor.MethodDescriptor(
     name='Watch',
     full_name='books.BookService.Watch',
-    index=5,
+    index=6,
     containing_service=None,
     input_type=_BOOK,
     output_type=_BOOK,
